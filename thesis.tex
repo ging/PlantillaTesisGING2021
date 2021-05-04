@@ -1,0 +1,178 @@
+\documentclass[twoside]{thesis_style/upmthesis}
+\usepackage{appendix}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{nameref}
+\usepackage{amsmath, amssymb, latexsym}
+\usepackage{graphics,epsfig,epsf,rotating,subfigure}
+\usepackage{theorem,url}
+\usepackage{rotfloat,array,pifont}
+\usepackage{float}
+\usepackage{url}
+\usepackage[breaklinks]{hyperref}
+\usepackage[table,usenames,dvipsnames]{xcolor}
+\usepackage{dblfloatfix}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage{clipboard}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+% \usepackage[default,scale=0.8]{helvetica}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{fancyhdr,lipsum}
+%\usepackage{emptypage} % To remove headers and page numbers from empty pages
+\usepackage[all]{nowidow}
+
+\usepackage{acronym}
+
+\usepackage{lscape}
+\usepackage[perpage]{footmisc}
+%\usepackage[spanish]{babel}
+\usepackage{color}
+
+\usepackage{xspace}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.2,.2,.2}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{mediumgrey}{rgb}{0.4, 0.4, 0.4}
+\definecolor{etsit_orange}{rgb}{1, 0.58, 0}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{chngcntr}
+\usepackage{textcomp}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{float}
+\usepackage{bm}
+%\usepackage[normalem]{ulem}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\usepackage[noadjust]{cite}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\arraybackslash}p{#1}}
+ 
+\usepackage[utf8]{inputenc}
+%\usepackage{tabu}
+%\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    linktoc=all
+}
+\usepackage{xpatch}
+
+\usepackage{refcount}
+\usepackage{calc}
+\newcommand{\numitemssum}[2]{\getrefnumber{#1}+\getrefnumber{#2}}
+
+
+\newcommand{\numitems}[1]{\getrefnumber{#1}}
+\newcounter{itemcntr}
+
+\AtBeginEnvironment{itemize}{%
+\setcounter{itemcntr}{0}%
+\xapptocmd{\item}{\refstepcounter{itemcntr}}{}{}%
+}
+%% Customize the header and footer
+\fancypagestyle{plain}{%
+    \fancyhf{}{} % clear all header and footer fields
+    \fancyhead[LE]{\color{black}\footnotesize\rightmark}
+    \fancyhead[RO]{\color{black}\footnotesize\leftmark}
+    %\fancyfoot[RO,LE]{\color{black}\footnotesize\thepage}
+    \fancyfoot[C]{\color{black}\footnotesize\thepage}
+    
+    \renewcommand{\footrulewidth}{0pt}
+    \renewcommand{\headrulewidth}{0pt}
+}
+% Customize the empty page between chapters so it has no header and footer (only page number)
+\fancypagestyle{inbetween}{%
+    \fancyhf{}{} % clear all header and footer fields
+    \fancyfoot[C]{\color{black}\footnotesize\thepage}
+    \renewcommand{\footrulewidth}{0pt}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+   \hbox{}\thispagestyle{inbetween}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+\pagestyle{plain}
+ 
+
+\title{Título de la tesis}
+
+\author{Nombre completo del alumno}{Ingeniero de Telecomunicación}
+\director{Nombre completo del director 1}{Doctor Ingeniero de Telecomunicación}
+ \codirector{Nombre completo del director 2}{Doctor Ingeniero de Telecomunicación}
+\donedatefront{22}{February}{2021} 
+
+\committeedate{\rule{1cm}{0.15mm}}{\rule{2cm}{0.15mm}}{\rule{1.5cm}{0.15mm}} 
+
+\university{Universidad Politécnica de Madrid}
+\school{Escuela Técnica Superior de Ingenieros de Telecomunicación}
+\department{Departamento de Ingeniería de Sistemas Telemáticos}
+\degree{Tesis doctoral}
+\addr{Madrid}{España}
+
+\committeepresident{\hrulefill}
+\committeesecretary{\hrulefill}
+\committeevocala{\hrulefill}
+\committeevocalb{\hrulefill}
+\committeevocalc{\hrulefill}
+\committeesubstitutea{\hrulefill}
+\committeesubstituteb{\hrulefill}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\vbadness=10000
+\setlength{\parindent}{3em}
+\setlength{\parskip}{1em}
+\makeindex
+
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+\begin{document}
+
+\makefrontmatter{content/abstract}{content/ack}{content/acronyms}
+\setlength{\parindent}{3em}
+\setlength{\parskip}{1em}
+\setlength{\baselineskip}{2em}
+
+
+\raggedbottom
+\setcounter{secnumdepth}{3}
+\include{content/ch01-intro}
+\include{content/ch02-stateoftheart}
+\include{content/ch03-something}
+\include{content/ch08-validation}
+\include{content/ch09-conclusions}
+
+
+%%%%%%%%%%%%%%%%%
+
+% UNCOMMENT NEXT LINES FOR APPENDICES
+%\appendix
+%\renewcommand\chaptername{Appendix}  
+%\renewcommand{\thechapter}{\Roman{chapter}}
+%\noappendicestocpagenum
+%\appendixpage
+%\addappheadtotoc
+%\chapter{Análisis de Impacto}
+%\include{content/append-a}
+% \addcontentsline{toc} {chapter}{\numberline {}Appendix A}
+%%%%%%%%%%%%%%%%%
+\bibliographystyle{ieeetr}  
+\bibliography{thesis}
+\addcontentsline{toc} {chapter}{Bibliography}{}
+
+\end{document} 
